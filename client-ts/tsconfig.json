@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    // `nodenext` rather than `bundler`: nothing bundles this package. It is
+    // loaded by Node from `dist/`, so the compiler should be checking the same
+    // resolution rules Node will apply — which is what makes the explicit
+    // `.js` specifiers throughout `src/` a checked fact rather than a habit.
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "lib": ["ES2023"],
+    "types": ["node"],
+    // vitest pulls vite's ambient types in, and they are written against
+    // the DOM lib this package deliberately does not load.
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["src", "tests"]
+}

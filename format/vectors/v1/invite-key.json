@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "algorithm": "HKDF-SHA256",
+  "salt": "",
+  "info": "datavalv/invite/v1",
+  "lengthBytes": 32,
+  "cases": [
+    {
+      "name": "zeros",
+      "secretHex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "inviteKeyHex": "a6becfe840364be44f3207f18a3439875339699a6b558f34937b33c972822e30"
+    },
+    {
+      "name": "ones",
+      "secretHex": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "inviteKeyHex": "21404d320cbad2be38b75810657c9b4d7e26dc394fc21cd016d8533a272c613d"
+    },
+    {
+      "name": "counting",
+      "secretHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "inviteKeyHex": "0a4b315ef2c1a484fa2fea05a74b817310a7d1841a14b211106b954140d1ae25"
+    },
+    {
+      "name": "sevens",
+      "secretHex": "0707070707070707070707070707070707070707070707070707070707070707",
+      "inviteKeyHex": "40cbb1e12cf5f144b87db91e380478cc40e63a8925b4ab0b7c8158269060d23c"
+    },
+    {
+      "name": "random",
+      "secretHex": "9f2c6b1e83a074d5c1fe40b7285936aa0d7c4e19f6b3820549ced71a6438fbc2",
+      "inviteKeyHex": "8bde896dadfb0fec8aca70451e931902f326da089e436e0d0ecaf261ea7c680a"
+    }
+  ]
+}

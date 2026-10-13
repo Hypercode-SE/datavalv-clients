@@ -1,0 +1,29 @@
+/* The build that makes this package installable from outside the repository.
+ *
+ * `tsconfig.json` is the checkout's compilation: it includes `tests`, emits
+ * nothing, and exists to be type-checked. This one emits `dist/`, which is what
+ * `main`, `types` and `exports` point at — without it the package's entry point
+ * is a `.ts` file that only a bundler can read, and `npm install @datavalv/crypto`
+ * installs something Node cannot load.
+ *
+ * `src/conformance.ts` is excluded. It is a developer tool — `npm run
+ * conformance` runs it from source with tsx, and `scripts/conformance_matrix.py`
+ * does the same — and it is the one file in `src/` that uses `process` and
+ * `Buffer`. Shipping its declarations would make `@types/node` a requirement of
+ * every consumer who type-checks this package's `.d.ts` files, for a module none
+ * of them will ever import.
+ */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    // The maps point at `../src/*.ts`, and `files` in package.json ships `src`
+    // beside `dist` so they resolve for a consumer as well as in this checkout.
+    "sourceMap": true
+  },
+  "include": ["src"],
+  "exclude": ["src/conformance.ts"]
+}

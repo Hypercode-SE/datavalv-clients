@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "magic": "DVLV",
+  "algId": 1,
+  "ivLength": 12,
+  "tagLength": 16,
+  "headerLength": 21,
+  "aes": { "algorithm": "AES-GCM", "keyBits": 256 },
+  "rsa": { "modulusBits": 3072, "hash": "SHA-256", "label": "" },
+  "hkdf": {
+    "hash": "SHA-256",
+    "info": {
+      "login": "datavalv/login/v1",
+      "kek": "datavalv/kek/v1",
+      "recovery": "datavalv/recovery/v1",
+      "invite": "datavalv/invite/v1"
+    }
+  },
+  "argon2id": {
+    "timeCost": 3,
+    "memoryKiB": 65536,
+    "parallelism": 1,
+    "hashLength": 32,
+    "saltPrefix": "datavalv/v1:"
+  },
+  "loginHashPrefix": "Dv1!"
+}

@@ -1,0 +1,22 @@
+/* What `npm pack` ships.
+ *
+ * `tsconfig.json` type-checks the checkout, tests included, and emits nothing.
+ * This one emits `dist/`, which is what `main`, `types`, `exports` and `bin`
+ * point at — a package whose entry point is a `.ts` file is a package Node
+ * cannot load.
+ */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "noEmit": false,
+    "declaration": true,
+    "declarationMap": true,
+    // The maps name `../src/*.ts`, and `files` in package.json ships `src`
+    // beside `dist` so a stack trace from an operator's cron job points at
+    // readable code rather than at a column number in compiled output.
+    "sourceMap": true
+  },
+  "include": ["src"]
+}

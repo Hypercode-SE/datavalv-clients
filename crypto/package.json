@@ -1,0 +1,62 @@
+{
+  "name": "@datavalv/crypto",
+  "version": "0.7.0",
+  "description": "Datavalv's v1 backup format: AES-256-GCM content encryption, RSA-OAEP key wrapping and the key derivation a member's browser does",
+  "license": "MIT",
+  "author": "Hypercode AB",
+  "homepage": "https://github.com/Hypercode-SE/datavalv-clients/tree/main/crypto#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hypercode-SE/datavalv-clients.git",
+    "directory": "crypto"
+  },
+  "keywords": [
+    "backup",
+    "encryption",
+    "end-to-end",
+    "datavalv"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "npm run build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "conformance": "tsx src/conformance.ts",
+    "test:browser": "playwright test"
+  },
+  "dependencies": {
+    "hash-wasm": "^4.11.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  },
+  "bugs": {
+    "url": "https://datavalv.se"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

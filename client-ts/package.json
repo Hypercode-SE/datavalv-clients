@@ -1,0 +1,68 @@
+{
+  "name": "@datavalv/client",
+  "version": "0.7.0",
+  "description": "Push end-to-end encrypted backups to Datavalv from a Node server",
+  "license": "MIT",
+  "author": "Hypercode AB",
+  "homepage": "https://github.com/Hypercode-SE/datavalv-clients/tree/main/client-ts#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hypercode-SE/datavalv-clients.git",
+    "directory": "client-ts"
+  },
+  "keywords": [
+    "backup",
+    "encryption",
+    "end-to-end",
+    "datavalv"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "datavalv": "./dist/bin.js"
+  },
+  "files": [
+    "dist",
+    "src",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "npm run build",
+    "typecheck": "tsc --noEmit",
+    "pretest": "npm run --prefix ../crypto build",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "jose": "^5.9.0"
+  },
+  "peerDependencies": {
+    "@datavalv/crypto": "^0.7.0"
+  },
+  "devDependencies": {
+    "@datavalv/crypto": "file:../crypto",
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  },
+  "bugs": {
+    "url": "https://datavalv.se"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
